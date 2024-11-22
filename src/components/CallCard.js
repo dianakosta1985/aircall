@@ -1,6 +1,11 @@
 // src/components/CallCard.jsx
 import React from "react";
 import { formatTime } from "../utils/helper";
+import IncomeCall from "../icons/IncomeCall.jsx";
+import MissedCall from "../icons/MissedCall.jsx";
+import OutcomeCall from "../icons/OutcomeCall.jsx";
+import Archived from "../icons/Archived.jsx";
+import UnArchived from "../icons/UnArchived.jsx";
 
 const CallCard = ({ call, onToggleArchive }) => {
   const handleArchiveToggle = (e) => {
@@ -10,12 +15,12 @@ const CallCard = ({ call, onToggleArchive }) => {
 
   const Icon = () => {
     if (call.call_type === "missed") {
-      return <img width="15px" src="/icons/missed-call.svg" alr="incoming" />;
+      return <MissedCall />;
     } else if (call.direction === "inbound" && call.call_type === "answered") {
-      return <img width="15px" src="/icons/incoming-call.svg" alr="incoming" />;
+      return <IncomeCall />;
     }
     //(call.direction === "outbound" && call.call_type === "answered")
-    return <img width="15px" src="/icons/outcoming-call.svg" alr="incoming" />;
+    return <OutcomeCall />;
   };
 
   return (
@@ -40,12 +45,12 @@ const CallCard = ({ call, onToggleArchive }) => {
         </td>
         <td className="action-cell">
           <tr>
-            <td>
+            <td title={call.is_archived ? "Archived" : "Unarchived"}>
               <button
                 className="archive-btn"
                 onClick={(e) => handleArchiveToggle(e)}
               >
-                {call.is_archived ? "Unarchive" : "Archive"}
+                {call.is_archived ? <UnArchived /> : <Archived />}
               </button>
             </td>
           </tr>

@@ -18,6 +18,30 @@ const ActivityFeed = () => {
     fetchCalls();
   }, []);
 
+  const groupedByDateArchieved = calls
+    .filter((call) => call.is_archived)
+    .reduce((acc, call) => {
+      const { created_at } = call;
+      const date = created_at.split("T")[0];
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(call);
+      return acc;
+    }, {});
+
+  const groupedByDateUnArchieved = calls
+    .filter((call) => !call.is_archived)
+    .reduce((acc, call) => {
+      const { created_at } = call;
+      const date = created_at.split("T")[0];
+      if (!acc[date]) {
+        acc[date] = [];
+      }
+      acc[date].push(call);
+      return acc;
+    }, {});
+
   const handleArchiveAll = async () => {
     const archivedCalls = calls.filter((call) => !call.is_archived);
     for (const call of archivedCalls) {
@@ -59,16 +83,17 @@ const ActivityFeed = () => {
           Unarchive All
         </button>
       </div>
-      {/* <h2>Archived Calls</h2> */}
-      <div className="call-list">
-        {calls
-          .filter((call) => !call.is_archived)
-          .map((call) => (
-            <>
-              <div className="created-at">
-                {formatPrettyDate(call.created_at)}
-              </div>
 
+      {Object.keys(groupedByDateArchieved).length ? (
+        <h2>Archived Calls</h2>
+      ) : (
+        ""
+      )}
+      <div className="call-list">
+        {Object.entries(groupedByDateArchieved).map(([date, calls]) => (
+          <>
+            <div className="created-at">{formatPrettyDate(date)}</div>
+            {calls.map((call) => (
               <Link
                 to={`/call/${call.id}`}
                 key={call.id}
@@ -80,27 +105,35 @@ const ActivityFeed = () => {
                   onToggleArchive={toggleArchive}
                 />
               </Link>
-            </>
-          ))}
+            ))}
+          </>
+        ))}
       </div>
 
-      {/* <h2>Archived Calls</h2> */}
+      {Object.keys(groupedByDateUnArchieved).length ? (
+        <h2>Unarchived Calls</h2>
+      ) : (
+        ""
+      )}
       <div className="call-list">
-        {calls
-          .filter((call) => call.is_archived)
-          .map((call) => (
-            <Link
-              to={`/call/${call.id}`}
-              key={call.id}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <CallCard
+        {Object.entries(groupedByDateUnArchieved).map(([date, calls]) => (
+          <>
+            <div className="created-at">{formatPrettyDate(date)}</div>
+            {calls.map((call) => (
+              <Link
+                to={`/call/${call.id}`}
                 key={call.id}
-                call={call}
-                onToggleArchive={toggleArchive}
-              />
-            </Link>
-          ))}
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <CallCard
+                  key={call.id}
+                  call={call}
+                  onToggleArchive={toggleArchive}
+                />
+              </Link>
+            ))}
+          </>
+        ))}
       </div>
     </div>
   );

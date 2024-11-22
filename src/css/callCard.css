@@ -48,19 +48,6 @@ table {
   color: gray;
 }
 
-.archive-btn {
-  font-size: 12px;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.archive-btn:focus {
-  outline: none;
-}
-
 /* CallCard Component */
 .call-card {
   display: flex;
@@ -87,17 +74,17 @@ table {
 }
 
 .archive-btn {
-  background-color: #28a745;
-  color: white;
+  /*background-color: #28a745;
+  color: white;*/
   border: none;
-  height: 20px;
-  padding: 3px 6px;
+  border-radius: 20px;
+  height: 28px;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .archive-btn:hover {
-  background-color: #218838;
+  background-color: rgb(220, 220, 220);
 }
 
 .phone-number {
@@ -110,5 +97,5 @@ table {
 .created-at {
   font-size: 12px;
   color: grey;
-  margin: 2px 2px 2px 135px;
+  margin: 2px 2px 2px 140px;
 }
