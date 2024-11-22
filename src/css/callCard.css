@@ -1,0 +1,114 @@
+/* General styling for CallCard */
+table {
+  min-width: 300px;
+  width: 100%;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.call-row {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.call-card:hover {
+  transform: translateY(-5px);
+}
+
+.call-card-header {
+  margin-bottom: 12px;
+}
+
+.call-card-body {
+  margin-bottom: 12px;
+}
+
+.call-card-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.call-from,
+.call-to,
+.call-type {
+  font-size: 16px;
+  color: #333;
+  margin: 4px 0;
+}
+
+.call-duration {
+  float: right;
+  font-size: 10px;
+  color: gray;
+}
+
+.archive-btn {
+  font-size: 12px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.archive-btn:focus {
+  outline: none;
+}
+
+/* CallCard Component */
+.call-card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.call-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.call-footer {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.archive-btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  height: 20px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.archive-btn:hover {
+  background-color: #218838;
+}
+
+.phone-number {
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: black;
+}
+
+.created-at {
+  font-size: 12px;
+  color: grey;
+  margin: 2px 2px 2px 135px;
+}

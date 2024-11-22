@@ -1,17 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import Header from './Header.jsx';
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ActivityFeed from "./components/ActivityFeed";
+import ActivityDetail from "./components/ActivityDetail";
 
 const App = () => {
   return (
-    <div className='container'>
-      <Header/>
-      <div className="container-view">Some activities should be here</div>
+    <div className="container">
+      <Router>
+        <Switch>
+          <Route path="/call/:id" component={ActivityDetail} />
+          <Route path="/" component={ActivityFeed} />
+        </Switch>
+      </Router>
     </div>
   );
 };
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById("app"));
 
 export default App;
