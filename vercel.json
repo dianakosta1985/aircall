@@ -2,11 +2,13 @@
   "builds": [
     {
       "src": "package.json",
-      "use": "@vercel/node"
-    },
+      "use": "@vercel/static-build"
+    }
+  ],
+  "rewrites": [
     {
-      "src": "public/**/*",
-      "use": "@vercel/static"
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ]
 }
