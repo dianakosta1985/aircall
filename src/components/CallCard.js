@@ -10,18 +10,12 @@ const CallCard = ({ call, onToggleArchive }) => {
 
   const Icon = () => {
     if (call.call_type === "missed") {
-      return (
-        <img width="15px" src="public/icons/missed-call.svg" alr="incoming" />
-      );
+      return <img width="15px" src="/icons/missed-call.svg" alr="incoming" />;
     } else if (call.direction === "inbound" && call.call_type === "answered") {
-      return (
-        <img width="15px" src="public/icons/incoming-call.svg" alr="incoming" />
-      );
+      return <img width="15px" src="/icons/incoming-call.svg" alr="incoming" />;
     }
     //(call.direction === "outbound" && call.call_type === "answered")
-    return (
-      <img width="15px" src="public/icons/outcoming-call.svg" alr="incoming" />
-    );
+    return <img width="15px" src="/icons/outcoming-call.svg" alr="incoming" />;
   };
 
   return (
